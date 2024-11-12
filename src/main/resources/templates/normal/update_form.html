@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org" 
+    th:replace="~{normal/base::layout(~{::section})}">
+<head>
+	<title>User Dashboard</title>
+</head>
+<body>
+	<section>
+		
+		<div class="card">
+			<div class="card-body ">
+                <h1 class="text-center">Update Your Contact</h1>
+                
+                <div class="container-fluid mt-3">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+
+                            <form action=""
+                                th:object="${contactDetails}"
+                                enctype="multipart/form-data"
+                                method="post"
+                                th:action="@{/user/process-update}"
+                                class="mt-2"
+                            >
+                            
+                            
+                            <input type="hidden" th:value="${contactDetails.cId}" name="cId">
+
+                            <!-- First Name field -->
+                           
+
+                           <div class="form-floating mb-3">
+							    <i class="icon fa fa-user-alt"></i>
+							   <input th:value="${contactDetails.firstName}" required type="text" class="form-control" id="floatingName" name="firstName" placeholder="Name">
+							   <label for="floatingName">Name</label>
+							   
+						   </div>
+						   
+						   <div class="form-floating mb-3">
+							   <i class="icon fas fa-user-alt"></i>
+							   <input th:value="${contactDetails.lastName}" required type="text" class="form-control" id="floatingLastName" name="lastName" placeholder="Nick Name">
+							   <label for="floatingLastName">Nick Name</label>
+							   
+						   </div>
+						   
+						    <div class="form-floating mb-3">
+								<i class="icon fa fa-phone"></i>
+							   <input th:value="${contactDetails.phone}"  type="number" class="form-control" id="floatingPhone" name="phone" placeholder="Phone">
+							   <label for="floatingPhone">Phone</label>
+							   
+						   </div>
+						   
+						    <div class="form-floating mb-3">
+								 <i class="icon fa fa-at"></i>
+							   <input th:value="${contactDetails.email}" required type="email" class="form-control" id="floatingEmail" name="email" placeholder="Email">
+							   <label for="floatingEmail">Email</label>
+							   
+						   </div>
+						   
+						   <div class="form-floating mb-3">
+							   <i class="icon fa fa-briefcase"></i>
+							   <input th:value="${contactDetails.work}" required type="text" class="form-control" id="floatingWork" name="work" placeholder="Enter Your Work">
+							   <label for="floatingWork">Enter Your Work</label>
+							   
+						   </div>
+						   
+						   <div class="textarea mb-3">
+							   <textarea th:utext="${contactDetails.description}"  id="mytextarea" class="form-control" placeholder="Enter Contact Description" name="description"  rows="10"></textarea>
+							   
+							   
+						   </div>
+						   
+						  <!-- <div class="custom-file">
+							   <input type="file" name="imageFile" class="form-control-file">
+						   </div>-->
+						   
+						   
+						   <div class="container text-center">
+							   <button  class="btn btn-outline-primary">Update Contact</button>
+							   
+						   </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+		</div>
+		
+		<script src="https://cdn.tiny.cloud/1/45kdh41qq8s2vr6iqd1w6psyowu4339lqtysi4etmdfzymb1/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+	<script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+		
+		
+	</section>
+</body>
+</html>

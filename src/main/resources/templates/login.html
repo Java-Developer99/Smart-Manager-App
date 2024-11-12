@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+  <head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+  </head>
+  <body>
+  <section>	  
+    <div class="center mt-5 mb-5">
+      <h1>Login</h1>
+      
+      <form method="post" th:action="@{/doLogin}">
+		  
+		 <div th:if="${message != null}" th:text="${message.text}" class="alert" th:classappend="${message.type}"></div>
+	  
+	  <div th:if="${param.logout}" class="alert alert-success">
+            You have been logged out.
+	  </div>
+      
+        <div class="txt_field">
+          <input type="text"  name="username" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+      
+        <div class="txt_field">
+          <input  type="password" name="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+      
+      <!--  <div class="pass container">
+			<a th:href="@{/forgot}">Forgot Password?</a> 
+			</div>-->
+        
+        <input type="submit" value="Login">
+        
+        <div class="signup_link">
+          Not a member? <a href="/signup/">Signup</a>
+        </div>
+      
+      </form>
+    </div>
+  </section>
+
+  </body>
+</html>

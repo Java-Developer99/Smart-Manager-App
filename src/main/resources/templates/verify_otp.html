@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+  <head>
+    <meta charset="utf-8">
+    <title>Email Page</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/style.css">
+  </head>
+  <body>
+  <section>	  
+    <div class="center mt-5 mb-5">
+      
+		      <div class="text-center alert alert-success mt-3 mr-3 ml-3" role="alert">
+				  OTP send successfully to your email
+			  </div>
+			  
+			  <div th:if="${session.message}" class="container text-center">
+		   <div  class="alert alert-danger my-2"  role="alert">
+              <span th:text="${session.message}"></span>
+		   </div>
+     <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+  </div>
+		      
+		      <form action="" th:action="@{/verify-otp}" method="post">
+				  
+		  <div class="form-group">
+			  <input required name="otp" type="number" placeholder="Enter your otp" class="form-control">
+			  
+		  </div>
+		  
+		  <div class="container text-center mt-3 mb-3">
+			  <button class="btn btn-warning">Verify</button>
+		  </div>
+		  
+	  </form>
+      
+    </div>
+  </section>
+
+  </body>
+</html>
